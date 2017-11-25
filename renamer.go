@@ -16,7 +16,7 @@ const (
 )
 
 var (
-	findAtCharacters = regexp.MustCompile("@+")
+	atCharactersRegex = regexp.MustCompile("@+")
 )
 
 func main() {
@@ -62,7 +62,7 @@ func main() {
 }
 
 func generateNewName(sheme string, counter int) string {
-	atCharacters := findAtCharacters.FindString("@+")
+	atCharacters := atCharactersRegex.FindString(sheme)
 	paddedCount := lpad(strconv.Itoa(counter), "0", len(atCharacters))
 
 	return strings.Replace(sheme, atCharacters, paddedCount, -1)
